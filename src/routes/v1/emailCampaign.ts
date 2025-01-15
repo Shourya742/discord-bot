@@ -45,7 +45,7 @@ router.post(
 
                         await newCampaignEntry.save();
                     }
-
+                    console.log("This time please save this GOD!!!!!!!!");
                     res.json({ message: "Campaign processed successfully" });
                 },
                 error: (error) => {
