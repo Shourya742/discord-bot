@@ -39,6 +39,7 @@ router.post(
                             timeZone: row["Time Zone in UTC"],
                             country: row["Country"],
                             cohortName: row["Cohort"] || "Default Cohort",
+                            role: row["Cohort"],
                             version: version,
                             token: userToken,
                         });

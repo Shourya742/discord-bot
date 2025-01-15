@@ -35,6 +35,10 @@ const emailCampaignSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+        role: {
+          type: String,
+          required: true,
+        },
         version: {
             type: String,
             required: true,
@@ -124,7 +128,7 @@ emailCampaignSchema.post("save", async function (doc, next) {
       <p class="subject">
         Welcome to the Bitshala BOSS Program – Your Journey Begins!
       </p>
-      <p>Hello ${doc.name},</p>
+      <p>Hello ${doc.ghName},</p>
       <p>
         Congratulations on qualifying for the Chaincode BOSS Program under
         Bitshala's guidance! You're part of a special group, who has been
