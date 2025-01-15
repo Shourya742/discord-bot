@@ -1,12 +1,16 @@
 import { GuildMember, SlashCommandBuilder } from "discord.js";
 import RegisterConfig from "../../models/RegisterConfig";
+import EmailCampaignConfig from "../../models/EmailCampaignConfig";
 import { SlashCommandProps } from "commandkit";
 
 export async function run({ interaction }: SlashCommandProps) {
     try {
         await interaction.deferReply({ ephemeral: true });
         const token = interaction.options.getString("token");
-        const user = await RegisterConfig.findOne({ token: token });
+        let user = await RegisterConfig.findOne({ token: token });
+        if (!user) {
+            user = await EmailCampaignConfig.findOne({token: token});
+        }
         if (!user) {
             interaction.followUp(
                 "Please register to our new cohort [here](https://bitshala.org/cohorts/)",
